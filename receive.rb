@@ -12,7 +12,8 @@ queue = channel.queue('hello')
 begin
   puts ' [*] Waiting for messages. To exit press CTRL+C'
   queue.subscribe(block: true) do |_delivery_info, _properties, body|
-    puts " [x] Received #{body}"
+    puts " [x] Received #{body}, working..."
+    sleep rand(5)
   end
 rescue Interrupt => _e
   connection.close
